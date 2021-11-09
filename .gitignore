@@ -1,0 +1,12 @@
+# The following lines are added to ignore all files without an extension
+# Ignore everything
+*  
+# Unignores anything that is a directory         
+!*/
+# Unignores all files with an extension         
+!*.*        
+
+###################################################################################
+
+# ignore objects and archives, anywhere in the tree.
+*.[oa]
