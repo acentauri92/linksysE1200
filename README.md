@@ -11,6 +11,8 @@ git clone https://github.com/acentauri92/linksysE1200.git
 ## Instructions
 The code needs to be crosscompiled for the Broadcom 5357 based on MIPS architecture. The instructions are listed on the websites above.
 
+![alt text](https://github.com/acentauri92/linksysE1200/blob/master/cover_page.jpg)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
