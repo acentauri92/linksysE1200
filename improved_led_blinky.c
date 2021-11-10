@@ -1,9 +1,9 @@
 /**
  ******************************************************************************
- * @file			led_blinky.c
- * @brief			This program toggles the onboard LED on the Linksys
- *                  E1200 v2 Internet router. The LED is connected to 
- *                  GPIO pin number 6.
+ * @file			improved_led_blinky.c
+ * @brief			This program is an improved version of the led_blinky
+ *                  program that we implemented. This program gracefully exits
+ *                  after unexporting the GPIO pin.
  * 										
  * @author			Dheeraj Reddy
  * @version			v1.0
@@ -14,7 +14,6 @@
 /*******************************************************************************
  * Header inclusions
  ******************************************************************************/
-
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -22,16 +21,55 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <signal.h>
+#include <string.h>
 
 #define LED_PIN     "6"       /* GPIO 6 on Linksys E1200 v2 controls the LED */ 
+
+/**
+ * Cleanup function that unexports the GPIO pin after we
+ * terminate the program. If we don not do this,
+ * the program quits with a "Resource busy" error.
+ * @param	None
+ * @return	None
+ * */
+
+static void Cleanup(void){
+	printf("\nSIGINT Trapped! Cleaning up and exiting...\n");
+
+    /* Open the gpio unexport file*/
+    u_int32_t fd = open("/sys/class/gpio/unexport", O_WRONLY);
+
+    /* Error check*/
+    if (fd < 0){
+        perror("Unable to open /sys/class/gpio/unexport");
+        exit(EXIT_FAILURE);
+    }
+
+    if (write(fd, LED_PIN, 2*sizeof(char)) != 2) {
+        perror("Error writing to /sys/class/gpio/unexport");
+        exit(EXIT_FAILURE);
+    }
+
+    close(fd);
+	exit(EXIT_SUCCESS);
+}
 
 /**
  * Program entry point
  * @param	None
  * @return	0 on success and -1 on failure
  * */
-int main(int argc, char const *argv[])
-{
+
+int main(int argc, char const *argv[]){
+
+	/* Trap SIGINT signal: delivered on pressing Ctrl + c */
+    struct sigaction act;
+	memset(&act, 0, sizeof(act));
+	act.sa_sigaction = (void*) Cleanup;
+	if((sigaction(SIGINT, &act, NULL)) < 0)
+		perror("sigaction() on SIGINT failed");
+
     /* Open the gpio export file*/
     u_int32_t fd = open("/sys/class/gpio/export", O_WRONLY);
 
@@ -77,7 +115,7 @@ int main(int argc, char const *argv[])
             perror("Error writing to /sys/class/gpio/gpio6/value");
             exit(EXIT_FAILURE);
         }
-        /* Sleep for 250 milliseconds*/        
+        /* Sleep for 250 milliseconds*/       
         usleep(250000);
 
         printf("Turning LED OFF\n");
@@ -89,5 +127,4 @@ int main(int argc, char const *argv[])
         usleep(250000);
     }
 
-    return EXIT_SUCCESS;
 }
