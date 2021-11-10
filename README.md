@@ -1,5 +1,5 @@
 # This Repository containing code files and examples for the project series on the Linksys E1200 v2 Internet router.
-I go through the detailed hardware and software setup in a series of projects on hackster.io The website links are listed below.  
+I go through the detailed hardware and software setup in a series of projects on my [hackster.io](https://www.hackster.io/acentauri92/projects) page. The website links are listed below.    
 [Exploring the humble Internet Router - Part 1](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-1-75703a)  
 [Exploring the humble Internet Router - Part 2](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-2-1321c8)  
 [Exploring the humble Internet Router - Part 3](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-3-da5688)  
