@@ -3,7 +3,7 @@ I go through the detailed hardware and software setup in a series of projects on
 [Exploring the humble Internet Router - Part 1](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-1-75703a)  
 [Exploring the humble Internet Router - Part 2](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-2-1321c8)  
 [Exploring the humble Internet Router - Part 3](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-3-da5688)  
-[Exploring the humble Internet Router - Part 4](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-4-4bd9b3) 
+[Exploring the humble Internet Router - Part 4](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-4-4bd9b3)   
 [Exploring the humble Internet Router - Part 5](https://www.hackster.io/acentauri92/exploring-the-humble-internet-router-part-5-056064) 
 
 
