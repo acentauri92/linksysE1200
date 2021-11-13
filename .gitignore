@@ -11,4 +11,5 @@
 # ignore objects and archives, anywhere in the tree.
 *.[oa]
 
+#Don't ignore makefiles
 !Makefile
